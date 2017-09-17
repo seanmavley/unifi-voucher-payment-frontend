@@ -1,20 +1,67 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
+<div class="container" style="margin-top:20px;">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Purchase AlwaysOn WiFi Voucher</h4>
+          <h6 class="card-subtitle mb-2 text-muted">Complete the form below</h6>
+          <hr>
+          <div class="card-text">
+            <form>
+              <div class="form-group">
+                <label for="customerName">Your Mobile Money Account Name</label>
+                <input type="email" class="form-control" id="customerName" aria-describedby="emailHelp" placeholder="e.g Pantang Francias">
+                <small id="emailHelp" class="form-text text-muted">This can be name used in registering the Mobile Money</small>
+              </div>
+              <div class="form-group">
+                <label for="network">Mobile Money Network</label>
+                <select class="form-control" name="network" id="network" aria-describeby="networkHelp">
+                  <option value="airtel-gh">Airtel Mobile Money</option>
+                </select>
+                <small id="networkHelp" class="form-text text-muted">We currently support only Airtel Mobile Money</small>
+              </div>
+              <div class="form-group">
+                <label for="number">Your Mobile Number</label>
+                <input type="number" class="form-control" id="number" placeholder="e.g 026xxxxxxx" aria-describeby="numberHelp">
+                <small id="numberHelp">The Mobile Money number payment will come from. It should belong to you.</small>
+              </div>
+              <div class="form-group">
+                <label for="package">Internet Package</label>
+                <select class="form-control" name="package" id="package" aria-describeby="packageHelp">
+                  <option value="1gig">1 Gig - 30 Days - 5 Cedis</option>
+                  <option value="3gig">3 Gig - 30 Days - 10 Cedis</option>
+                  <option value="10gig">10 Gig - 30 Days - 30 Cedis</option>
+                </select>
+                <small id="packageHelp" class="form-text text-muted">Choose your package</small>
+              </div>
+              <a class="btn btn-primary text-white" role="button" data-toggle="modal" data-target="#reviewPurchase">Review Purchase</a>
+              <div class="modal fade" id="reviewPurchase" tabindex="-1" role="dialog" aria-labelledby="reviewPurchase" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="reviewPurchase">Review your Purchase</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      ...
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" role="button" class="btn btn-primary">Make Payment</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <hr>
+          <a href="#" class="card-link">About AlwaysOn WiFi</a>
+          <a href="#" class="card-link">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io//">Angular blog</a></h2>
-  </li>
-</ul>
-
+<!-- Modal -->
