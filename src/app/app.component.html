@@ -7,34 +7,35 @@
           <h6 class="card-subtitle mb-2 text-muted">Complete the form below</h6>
           <hr>
           <div class="card-text">
-            <form>
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
               <div class="form-group">
                 <label for="customerName">Your Mobile Money Account Name</label>
-                <input type="email" class="form-control" id="customerName" aria-describedby="emailHelp" placeholder="e.g Pantang Francias">
+                <input type="text" class="form-control" id="customerName" aria-describedby="emailHelp" placeholder="e.g Pantang Francias" name="name" [(ngModel)]="name">
                 <small id="emailHelp" class="form-text text-muted">This can be name used in registering the Mobile Money</small>
               </div>
               <div class="form-group">
                 <label for="network">Mobile Money Network</label>
-                <select class="form-control" name="network" id="network" aria-describeby="networkHelp">
+                <select class="form-control" name="network" id="network" aria-describeby="networkHelp" [(ngModel)]="network" required>
                   <option value="airtel-gh">Airtel Mobile Money</option>
                 </select>
                 <small id="networkHelp" class="form-text text-muted">We currently support only Airtel Mobile Money</small>
               </div>
               <div class="form-group">
                 <label for="number">Your Mobile Number</label>
-                <input type="number" class="form-control" id="number" placeholder="e.g 026xxxxxxx" aria-describeby="numberHelp">
+                <input type="number" name="number" class="form-control" id="number" placeholder="e.g 026xxxxxxx" aria-describeby="numberHelp" [(ngModel)]="number" required minlength="10" maxlength="10">
                 <small id="numberHelp">The Mobile Money number payment will come from. It should belong to you.</small>
               </div>
               <div class="form-group">
                 <label for="package">Internet Package</label>
-                <select class="form-control" name="package" id="package" aria-describeby="packageHelp">
+                <select class="form-control" name="package" id="package" aria-describeby="packageHelp" [(ngModel)]="package" required>
                   <option value="1gig">1 Gig - 30 Days - 5 Cedis</option>
                   <option value="3gig">3 Gig - 30 Days - 10 Cedis</option>
                   <option value="10gig">10 Gig - 30 Days - 30 Cedis</option>
                 </select>
                 <small id="packageHelp" class="form-text text-muted">Choose your package</small>
               </div>
-              <a class="btn btn-primary text-white" role="button" data-toggle="modal" data-target="#reviewPurchase">Review Purchase</a>
+              <button class="btn btn-primary text-white" [disabled]="!f.valid" role="button" data-toggle="modal" data-target="#reviewPurchase">Review Purchase</button>
+              <!-- Review Purchase Modal -->
               <div class="modal fade" id="reviewPurchase" tabindex="-1" role="dialog" aria-labelledby="reviewPurchase" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -45,11 +46,20 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      ...
+                      <ul class="list-group">
+                        <li class="list-group-item">Name: <strong>{{ f.value.name}}</strong></li>
+                        <li class="list-group-item">Mobile Money Network: <strong>{{ f.value.network }}</strong></li>
+                        <li class="list-group-item">Your Number: <strong>0{{ f.value.number }}</strong></li>
+                        <li class="list-group-item">Internet Package: <strong>{{ f.value.package }}</strong></li>
+                      </ul>
+                      <hr>
+                      <p class="lead text-center">
+                        Proceed below if details above is correct.
+                      </p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" role="button" class="btn btn-primary">Make Payment</button>
+                      <button type="submit" role="button" class="btn btn-primary">Make Payment</button>
                     </div>
                   </div>
                 </div>
@@ -57,8 +67,8 @@
             </form>
           </div>
           <hr>
-          <a href="#" class="card-link">About AlwaysOn WiFi</a>
-          <a href="#" class="card-link">Contact us</a>
+          <a href="https://alwayson.khophi.co" target="blank" class="card-link">About AlwaysOn WiFi</a>
+          <a href="https://alwayson.khophi.co/support" target="blank" class="card-link">Contact us</a>
         </div>
       </div>
     </div>
