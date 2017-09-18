@@ -1,13 +1,16 @@
-<div class="container" style="margin-top:20px;">
+<div class="container top-space">
+  <div class="overlay" *ngIf="busy">
+    <div class="loader">Loading...</div>
+  </div>
   <div class="row">
     <div class="col-sm-12 col-md-10 col-lg-8">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Purchase AlwaysOn WiFi Voucher</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Complete the form below</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Complete the form below. All Fields are Required</h6>
           <hr>
           <div class="card-text">
-            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
               <div class="form-group">
                 <label for="customerName">Your Mobile Money Account Name</label>
                 <input type="text" class="form-control" id="customerName" aria-describedby="emailHelp" placeholder="e.g Pantang Francias" name="name" [(ngModel)]="name">
@@ -17,24 +20,26 @@
                 <label for="network">Mobile Money Network</label>
                 <select class="form-control" name="network" id="network" aria-describeby="networkHelp" [(ngModel)]="network" required>
                   <option value="airtel-gh">Airtel Mobile Money</option>
+                  <option value="tigo-gh">Tigo Cash</option>
+                  <option value="mtn-gh">MTN Mobile Money</option>
                 </select>
                 <small id="networkHelp" class="form-text text-muted">We currently support only Airtel Mobile Money</small>
               </div>
               <div class="form-group">
                 <label for="number">Your Mobile Number</label>
-                <input type="number" name="number" class="form-control" id="number" placeholder="e.g 026xxxxxxx" aria-describeby="numberHelp" [(ngModel)]="number" required minlength="10" maxlength="10">
-                <small id="numberHelp">The Mobile Money number payment will come from. It should belong to you.</small>
+                <input type="number" name="phone_number" class="form-control" id="phone_number" placeholder="e.g 0269201707" aria-describeby="phone_numberHelp" [(ngModel)]="phone_number" required maxlength="10">
+                <small id="phone_numberHelp">The Mobile Money number payment will come from. It should belong to you.</small>
               </div>
               <div class="form-group">
-                <label for="package">Internet Package</label>
-                <select class="form-control" name="package" id="package" aria-describeby="packageHelp" [(ngModel)]="package" required>
+                <label for="internet_package">Internet Package</label>
+                <select class="form-control" name="internet_package" id="internet_package" aria-describeby="packageHelp" [(ngModel)]="internet_package" required>
                   <option value="1gig">1 Gig - 30 Days - 5 Cedis</option>
                   <option value="3gig">3 Gig - 30 Days - 10 Cedis</option>
                   <option value="10gig">10 Gig - 30 Days - 30 Cedis</option>
                 </select>
                 <small id="packageHelp" class="form-text text-muted">Choose your package</small>
               </div>
-              <button class="btn btn-primary text-white" [disabled]="!f.valid" role="button" data-toggle="modal" data-target="#reviewPurchase">Review Purchase</button>
+              <a class="btn btn-primary text-white" role="button" data-toggle="modal" data-target="#reviewPurchase">Review Purchase</a>
               <!-- Review Purchase Modal -->
               <div class="modal fade" id="reviewPurchase" tabindex="-1" role="dialog" aria-labelledby="reviewPurchase" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -49,17 +54,20 @@
                       <ul class="list-group">
                         <li class="list-group-item">Name: <strong>{{ f.value.name}}</strong></li>
                         <li class="list-group-item">Mobile Money Network: <strong>{{ f.value.network }}</strong></li>
-                        <li class="list-group-item">Your Number: <strong>0{{ f.value.number }}</strong></li>
-                        <li class="list-group-item">Internet Package: <strong>{{ f.value.package }}</strong></li>
+                        <li class="list-group-item">Your Number: <strong>0{{ f.value.phone_number }}</strong></li>
+                        <li class="list-group-item">Internet Package: <strong>{{ f.value.internet_package }}</strong></li>
                       </ul>
                       <hr>
-                      <p class="lead text-center">
+                      <p class="lead text-center text-danger" *ngIf="!f.valid">
+                        You have not fully completed the form. Go back and fill all the fields.
+                      </p>
+                      <p class="lead text-center" *ngIf="f.valid">
                         Proceed below if details above is correct.
                       </p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" role="button" class="btn btn-primary">Make Payment</button>
+                      <button type="submit" [disabled]="!f.valid" role="button" class="btn btn-primary">Make Payment</button>
                     </div>
                   </div>
                 </div>
