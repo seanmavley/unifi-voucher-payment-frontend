@@ -40,4 +40,20 @@ export class PurchaseService {
       })
   }
 
+  /**
+  * Poll transaction callback to learn if return value is in.
+  * @param {string} trans_id The transaction ID to use to check
+  * @returns {Observable}
+  */
+  callback(trans_id: string) {
+    let params = {
+      trans_id: trans_id
+    };
+
+    return this.http.post(API_URL + '/callback', JSON.stringify(params), { headers: this.headers })
+      .map((res) => {
+        return res;
+      })
+  }
+
 }
