@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-const API_URL = 'http://localhost:3000';
-// const API_URL = 'https://api.khophi.co/buy';
+// const API_URL = 'http://localhost:3000';
+const API_URL = 'https://api.khophi.com/hubtel';
 
 @Injectable()
 export class PurchaseService {

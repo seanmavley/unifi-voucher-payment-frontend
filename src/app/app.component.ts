@@ -10,6 +10,13 @@ import { PurchaseService } from './purchase.service';
 export class AppComponent {
   
   busy: boolean;
+  name: string;
+  network: string;
+  phone_number: number;
+  internet_package: string;
+
+  error: boolean;
+  success: boolean;
 
   constructor(public purchase: PurchaseService) {
 
@@ -40,12 +47,15 @@ export class AppComponent {
         if (res.json().state) {
           console.log('Successfully went through', res.json().data.ResponseCode);
           this.busy = false;
+          this.success = true;
         }
 
         // otherwise
         if (!res.json().state) {
           if(res.json().data.ResponseCode === '0001') {
-            console.log('pending data, will begin ping now')
+
+            console.log('pending data, will begin polling now');
+            console.log('polling the endpoint api.khophi.com/hubtel/callback/get');
 
             /**
             * Make requests to /callback/get endpoint every 15 seconds
@@ -62,20 +72,25 @@ export class AppComponent {
                     console.log('Forgetti. Failed request');
                     console.log(res.json().error);
                     clearInterval(pollInterval); // stop polling
+                    this.error = true;
                   }
 
                   // We got the code generated. We're a go
                   if (res.json().status === 200) {
                     console.log('Good, here is your code');
                     clearInterval(pollInterval);
+                    this.success = true;
                   }
 
                   // the purchase call to the api would still be happening,
                   // because we assume a 404 each time. We only clear the interval
+                  // when we get a response back
                 })
             }, 15000)
           } else {
             console.log('stop everything, it was an error');
+            this.busy = false;
+            this.error = true;
           }
         }
     })  

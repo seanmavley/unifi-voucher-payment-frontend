@@ -52,6 +52,12 @@
                       </button>
                     </div>
                     <div class="modal-body">
+                      <p class="lead text-danger" *ngIf="error">
+                        There was an error. Couldn't complete transaction. I will one day tell you the actuall error. 
+                      </p>
+                      <p class="lead text-success" *ngIf="success">
+                        Succeeded. Thanks for your kind donation. Goes to my Hubtel account. 
+                      </p>
                       <ul class="list-group">
                         <li class="list-group-item">Name: <strong>{{ f.value.name}}</strong></li>
                         <li class="list-group-item">Mobile Money Network: <strong>{{ f.value.network }}</strong></li>
