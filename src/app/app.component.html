@@ -3,12 +3,14 @@
     <div class="loader">Loading...</div>
   </div>
   <div class="row">
-    <!-- <a class="btn btn-primary btn-lg" (click)="onTest()">Run Something</a> -->
     <div class="col-sm-12 col-md-10 col-lg-8">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Purchase AlwaysOn WiFi Voucher</h4>
           <h6 class="card-subtitle mb-2 text-muted">Complete the form below. All Fields are Required</h6>
+          <h3 class="lead">
+            CAUTION: This site still in development. USE at your OWN Risk! However, the WORSE thing that can happen is the transaction failing and you breaking my Server. The best thing? You donate at least 5 Cedis to me! 
+          </h3>
           <hr>
           <div class="card-text">
             <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
@@ -29,7 +31,7 @@
               <div class="form-group">
                 <label for="number">Your Mobile Number</label>
                 <input type="number" name="phone_number" class="form-control" id="phone_number" placeholder="e.g 0269201707" aria-describeby="phone_numberHelp" [(ngModel)]="phone_number" required maxlength="10">
-                <small id="phone_numberHelp">The Mobile Money number payment will come from. It should belong to you.</small>
+                <small class="text-muted form-text" id="phone_numberHelp">The Mobile Money number payment will come from. It should belong to you.</small>
               </div>
               <div class="form-group">
                 <label for="internet_package">Internet Package</label>
