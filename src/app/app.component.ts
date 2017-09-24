@@ -15,6 +15,8 @@ export class AppComponent {
   phone_number: number;
   internet_package: string;
 
+  result: any;
+
   error: boolean;
   success: boolean;
 
@@ -32,6 +34,7 @@ export class AppComponent {
           console.log('Successfully went through', res.json().data.ResponseCode);
           this.busy = false;
           this.success = true;
+          this.result = res.json().data.code;
         } else {
             if(res.json().data.ResponseCode === '0001') {
             /**

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-// const API_URL = 'http://localhost:3000';
+// const API_URL = 'http://localhost:3012';
 const API_URL = 'https://api.khophi.com/hubtel';
 
 @Injectable()
@@ -50,7 +50,7 @@ export class PurchaseService {
       trans_id: trans_id
     };
 
-    return this.http.post(API_URL + '/callback', JSON.stringify(params), { headers: this.headers })
+    return this.http.post(API_URL + '/callback/get', JSON.stringify(params), { headers: this.headers })
       .map((res) => {
         return res;
       })

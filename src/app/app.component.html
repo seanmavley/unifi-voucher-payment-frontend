@@ -3,49 +3,56 @@
     <div class="loader">Loading...</div>
   </div>
   <div class="row">
-    <div class="col-sm-12 col-md-10 col-lg-8">
+    <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Purchase AlwaysOn WiFi Voucher</h4>
           <h6 class="card-subtitle mb-2 text-muted">Complete the form below. All Fields are Required</h6>
-          <h3 class="lead">
-            CAUTION: This site still in development. USE at your OWN Risk! However, the WORSE thing that can happen is the transaction failing and you breaking my Server. The best thing? You donate at least 5 Cedis to me! 
-          </h3>
           <hr>
           <div class="card-text">
             <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
-              <div class="form-group">
-                <label for="customerName">Your Mobile Money Account Name</label>
-                <input type="text" class="form-control" id="customerName" aria-describedby="emailHelp" placeholder="e.g Pantang Francias" name="name" [(ngModel)]="name">
-                <small id="emailHelp" class="form-text text-muted">This can be name used in registering the Mobile Money</small>
-              </div>
-              <div class="form-group">
-                <label for="network">Mobile Money Network</label>
-                <select class="form-control" name="network" id="network" aria-describeby="networkHelp" [(ngModel)]="network" required>
-                  <option value="airtel-gh">Airtel Mobile Money</option>
-                  <option value="tigo-gh">Tigo Cash</option>
-                  <option value="mtn-gh">MTN Mobile Money</option>
-                </select>
-                <small id="networkHelp" class="form-text text-muted">We currently support only Airtel Mobile Money</small>
-              </div>
-              <div class="form-group">
-                <label for="number">Your Mobile Number</label>
-                <input type="number" name="phone_number" class="form-control" id="phone_number" placeholder="e.g 0269201707" aria-describeby="phone_numberHelp" [(ngModel)]="phone_number" required maxlength="10">
-                <small class="text-muted form-text" id="phone_numberHelp">The Mobile Money number payment will come from. It should belong to you.</small>
-              </div>
-              <div class="form-group">
-                <label for="internet_package">Internet Package</label>
-                <select class="form-control" name="internet_package" id="internet_package" aria-describeby="packageHelp" [(ngModel)]="internet_package" required>
-                  <option value="1gig">1 Gig - 30 Days - 5 Cedis</option>
-                  <option value="3gig">3 Gig - 30 Days - 10 Cedis</option>
-                  <option value="10gig">10 Gig - 30 Days - 30 Cedis</option>
-                </select>
-                <small id="packageHelp" class="form-text text-muted">Choose your package</small>
+              <div class="form-row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="customerName">Your Mobile Money Account Name</label>
+                    <input type="text" class="form-control" id="customerName" aria-describedby="emailHelp" placeholder="e.g Pantang Francias" name="name" [(ngModel)]="name">
+                    <small id="emailHelp" class="form-text text-muted">This can be name used in registering the Mobile Money</small>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="network">Mobile Money Network</label>
+                    <select class="form-control" name="network" id="network" aria-describeby="networkHelp" [(ngModel)]="network" required>
+                      <option value="airtel-gh">Airtel Mobile Money</option>
+                      <option value="tigo-gh">Tigo Cash</option>
+                      <option value="mtn-gh">MTN Mobile Money</option>
+                    </select>
+                    <small id="networkHelp" class="form-text text-muted">We currently support Airtel, MTN and Tigo Mobile Money Payments</small>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="number">Your Mobile Number</label>
+                    <input type="number" name="phone_number" class="form-control" id="phone_number" placeholder="e.g 0269201707" aria-describeby="phone_numberHelp" [(ngModel)]="phone_number" required maxlength="10">
+                    <small class="text-muted form-text" id="phone_numberHelp">The Mobile Money number payment will come from. It should belong to you.</small>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="internet_package">Internet Package</label>
+                    <select class="form-control" name="internet_package" id="internet_package" aria-describeby="packageHelp" [(ngModel)]="internet_package" required>
+                      <option value="1gig">1 Gig - 30 Days - 5 Cedis</option>
+                      <option value="3gig">3 Gig - 30 Days - 10 Cedis</option>
+                      <option value="10gig">10 Gig - 30 Days - 30 Cedis</option>
+                    </select>
+                    <small id="packageHelp" class="form-text text-muted">Choose your package</small>
+                  </div>
+                </div>
               </div>
               <a class="btn btn-primary text-white" role="button" data-toggle="modal" data-target="#reviewPurchase">Review Purchase</a>
               <!-- Review Purchase Modal -->
               <div class="modal fade" id="reviewPurchase" tabindex="-1" role="dialog" aria-labelledby="reviewPurchase" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="reviewPurchase">Review your Purchase</h5>
@@ -54,11 +61,17 @@
                       </button>
                     </div>
                     <div class="modal-body">
+                      <div *ngIf="success">
+                        <p class="lead text-success">
+                          Write this Number Somewhere
+                        </p>
+                        <h2>{{ result }}</h2>
+                      </div>
                       <p class="lead text-danger" *ngIf="error">
-                        There was an error. Couldn't complete transaction. I will one day tell you the actuall error. 
+                        There was an error. Couldn't complete transaction. I will one day tell you the actuall error.
                       </p>
                       <p class="lead text-success" *ngIf="success">
-                        Succeeded. Thanks for your kind donation. Goes to my Hubtel account. 
+                        Succeeded. Thanks for your kind donation. Goes to my Hubtel account.
                       </p>
                       <ul class="list-group">
                         <li class="list-group-item">Name: <strong>{{ f.value.name}}</strong></li>
@@ -86,6 +99,8 @@
           <hr>
           <a href="https://alwayson.khophi.co" target="blank" class="card-link">About AlwaysOn WiFi</a>
           <a href="https://alwayson.khophi.co/support" target="blank" class="card-link">Contact us</a>
+          <a class="card-link text-muted"><small>026.920.1707</small></a>
+          <a class="card-link text-muted"><small>alwayson@khophi.co</small></a>
         </div>
       </div>
     </div>
