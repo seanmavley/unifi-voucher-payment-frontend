@@ -6,7 +6,7 @@
     <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Purchase AlwaysOn WiFi Voucher</h4>
+          <h4 class="card-title">Purchase AlwaysOn WiFi Voucher <small style="font-size:0.8rem;" class="text-danger">alpha</small></h4>
           <h6 class="card-subtitle mb-2 text-muted">Complete the form below. All Fields are Required</h6>
           <hr>
           <div class="card-text">
@@ -34,7 +34,7 @@
                   <div class="form-group">
                     <label for="number">Your Mobile Number</label>
                     <input type="number" name="phone_number" class="form-control" id="phone_number" placeholder="e.g 0269201707" aria-describeby="phone_numberHelp" [(ngModel)]="phone_number" required maxlength="10">
-                    <small class="text-muted form-text" id="phone_numberHelp">The Mobile Money number payment will come from. It should belong to you.</small>
+                    <small class="text-muted form-text" id="phone_numberHelp">The Mobile Money number the payment will come from. It should belong to you.</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
@@ -63,15 +63,20 @@
                     <div class="modal-body">
                       <div *ngIf="success">
                         <p class="lead text-success">
-                          Write this Number Somewhere
+                          Write this Number Somewhere. It is your AlwaysOn WiFi Voucher
                         </p>
                         <h2>{{ result }}</h2>
+                        <p class="lead">
+                          Your Transaction ID is {{ trans_id }}
+                        </p>
                       </div>
                       <p class="lead text-danger" *ngIf="error">
-                        There was an error. Couldn't complete transaction. I will one day tell you the actuall error.
-                      </p>
-                      <p class="lead text-success" *ngIf="success">
-                        Succeeded. Thanks for your kind donation. Goes to my Hubtel account.
+                        There was an error. Couldn't complete transaction. <br/>
+                        Message: {{ msg }}
+                        <br>
+                        <br>
+                        Here is your transaction ID, for reference sake, should you wanna contact support.
+                        Transaction ID: {{ trans_id }}
                       </p>
                       <ul class="list-group">
                         <li class="list-group-item">Name: <strong>{{ f.value.name}}</strong></li>

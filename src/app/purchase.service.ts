@@ -3,7 +3,7 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 // const API_URL = 'http://localhost:3012';
-const API_URL = 'https://api.khophi.com/hubtel';
+const API_URL = 'https://api.enjoywifi.today';
 
 @Injectable()
 export class PurchaseService {
@@ -32,7 +32,7 @@ export class PurchaseService {
       package: internet_package
     };
 
-    console.log(params);
+    // console.log(params);
 
     return this.http.post(API_URL + '/buy', JSON.stringify(params), { headers: this.headers })
       .map((res) => {
