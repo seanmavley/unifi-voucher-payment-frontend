@@ -14,8 +14,7 @@ Mazzuma's Mobile Money Payments API is in use for the mobile payments. Node-Unif
 
  - A form collects user information
  - Details are submitted to an API endpoint (see implementation at @seanmavley/unifi-voucher-payment-server)
- - API then queries Mazzuma API, and waits for response
- - Frontend polls a callback endpoint for updates. If found, proceeds to display generated voucher.
+ - API then queries Mazzuma API, and waits for response (success or failed (`undefined`))
  
 ## Run Locally
 
