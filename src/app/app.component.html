@@ -23,9 +23,9 @@
                   <div class="form-group">
                     <label for="network">Mobile Money Network</label>
                     <select class="form-control" name="network" id="network" aria-describeby="networkHelp" [(ngModel)]="network" required>
-                      <option value="airtel-gh">Airtel Mobile Money</option>
-                      <option value="tigo-gh">Tigo Cash</option>
-                      <option value="mtn-gh">MTN Mobile Money</option>
+                      <option value="airtel">Airtel Mobile Money</option>
+                      <option value="tigo">Tigo Cash</option>
+                      <option value="mtn">MTN Mobile Money</option>
                     </select>
                     <small id="networkHelp" class="form-text text-muted">We currently support Airtel, MTN and Tigo Mobile Money Payments</small>
                   </div>
@@ -33,7 +33,7 @@
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label for="number">Your Mobile Number</label>
-                    <input type="number" name="phone_number" class="form-control" id="phone_number" placeholder="e.g 0269201707" aria-describeby="phone_numberHelp" [(ngModel)]="phone_number" required maxlength="10">
+                    <input type="text" name="phone_number" class="form-control" id="phone_number" placeholder="e.g 0269201707" aria-describeby="phone_numberHelp" [(ngModel)]="phone_number" required maxlength="10">
                     <small class="text-muted form-text" id="phone_numberHelp">The Mobile Money number the payment will come from. It should belong to you.</small>
                   </div>
                 </div>
@@ -41,6 +41,8 @@
                   <div class="form-group">
                     <label for="internet_package">Internet Package</label>
                     <select class="form-control" name="internet_package" id="internet_package" aria-describeby="packageHelp" [(ngModel)]="internet_package" required>
+                      <option value="0.1gig">100 Mb - 3 Days - 1 Cedi</option>
+                      <option value="0.3gig">300 Mb - 3 Days - 2 Cedis</option>
                       <option value="1gig">1 Gig - 30 Days - 5 Cedis</option>
                       <option value="3gig">3 Gig - 30 Days - 10 Cedis</option>
                       <option value="10gig">10 Gig - 30 Days - 30 Cedis</option>
@@ -66,22 +68,15 @@
                           Write this Number Somewhere. It is your AlwaysOn WiFi Voucher
                         </p>
                         <h2>{{ result }}</h2>
-                        <p class="lead">
-                          Your Transaction ID is {{ trans_id }}
-                        </p>
                       </div>
                       <p class="lead text-danger" *ngIf="error">
-                        There was an error. Couldn't complete transaction. <br/>
-                        Message: {{ msg }}
-                        <br>
-                        <br>
-                        Here is your transaction ID, for reference sake, should you wanna contact support.
-                        Transaction ID: {{ trans_id }}
+                        Error Message <br/>
+                        "{{ msg }}"
                       </p>
                       <ul class="list-group">
                         <li class="list-group-item">Name: <strong>{{ f.value.name}}</strong></li>
                         <li class="list-group-item">Mobile Money Network: <strong>{{ f.value.network }}</strong></li>
-                        <li class="list-group-item">Your Number: <strong>0{{ f.value.phone_number }}</strong></li>
+                        <li class="list-group-item">Your Number: <strong>{{ f.value.phone_number }}</strong></li>
                         <li class="list-group-item">Internet Package: <strong>{{ f.value.internet_package }}</strong></li>
                       </ul>
                       <hr>
@@ -94,7 +89,8 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" [disabled]="!f.valid" role="button" class="btn btn-primary">Make Payment</button>
+                      <button *ngIf="!error" type="submit" [disabled]="!f.valid" role="button" class="btn btn-primary">Make Payment</button>
+                      <a *ngIf="error" onclick="window.location.reload()" class="btn btn-danger">Retry again.</a>
                     </div>
                   </div>
                 </div>
@@ -102,8 +98,8 @@
             </form>
           </div>
           <hr>
-          <a href="https://alwayson.khophi.co" target="blank" class="card-link">About AlwaysOn WiFi</a>
-          <a href="https://alwayson.khophi.co/support" target="blank" class="card-link">Contact us</a>
+          <a href="https://www.enjoywifi.today" target="blank" class="card-link">About AlwaysOn WiFi</a>
+          <a href="https://www.enjoywifi.today/support" target="blank" class="card-link">Contact us</a>
           <a class="card-link text-muted"><small>026.920.1707</small></a>
           <a class="card-link text-muted"><small>alwayson@khophi.co</small></a>
         </div>

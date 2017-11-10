@@ -19,16 +19,27 @@ export class PurchaseService {
   * Makes a purchase to API
   * @param {string} name The name of the Mobile Money Account Holder
   * @param {string} network The mobile money wallet network provider
-  * @param {number} phone_number The mobile money to deduct money from
+  * @param {from_phone_number} phone_number The mobile money to deduct money from
+  * @param {to_phone_number} phone_number The mobile money to deduct money from
   * @param {string} internet_package What package selected
   * @returns {Observable} 
   */
-  buy(name: string, network: string, phone_number: number, internet_package: string) {
+  buy(name: string, 
+    network: string, 
+    from_phone_number: number, 
+    internet_package: string) {
+    let another = {
+      "price":"1",
+      "network":"mtn",
+      "recipient_number":"026xxxxxxx",
+      "sender":"024xxxxxxx",
+      "option":"rmta",
+      "apikey":""
+    };
 
     let params = {
-      name: name,
       network: network,
-      number: phone_number,
+      from_number: from_phone_number,
       package: internet_package
     };
 

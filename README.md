@@ -1,6 +1,6 @@
 # Unifi Voucher Payment Frontend
 
-A typical use case of the Hubtel API in making mobile money payments. 
+A typical use case of the Mazzuma API in making mobile money payments. 
 
 To see this repository in action, visit [Enjoy WiFi, Today]('https://enjoywifi.today') and follow the "Buy Bundle" link.
 
@@ -8,13 +8,13 @@ This repository is complementary to the @seanmavley/unifi-voucher-payment-server
 
 See the @seanmavley/unifi-voucher-payment-server for more details of the outworkings of the API.
 
-Hubtel's Mobile Money Payments API is in use for the mobile payments. Node-UnifiAPI ( @delian/node-unifiapi ) handles the generation of voucher codes, in connection with our self-managed Unifi Controller for AlwaysOn WiFi.
+Mazzuma's Mobile Money Payments API is in use for the mobile payments. Node-UnifiAPI ( @delian/node-unifiapi ) handles the generation of voucher codes, in connection with our self-managed Unifi Controller for AlwaysOn WiFi.
 
 ## How it works
 
  - A form collects user information
  - Details are submitted to an API endpoint (see implementation at @seanmavley/unifi-voucher-payment-server)
- - API then queries Hubtel API, and waits for response
+ - API then queries Mazzuma API, and waits for response
  - Frontend polls a callback endpoint for updates. If found, proceeds to display generated voucher.
  
 ## Run Locally
