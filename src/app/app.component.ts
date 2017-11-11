@@ -35,6 +35,7 @@ export class AppComponent {
           console.log('Succeeded', res.json().data);
           this.success = true;
           this.result = res.json().data.code;
+          this.trans_id = res.json().transaction.id;
         } else {
           console.log(res.json().data);
           this.error = true;

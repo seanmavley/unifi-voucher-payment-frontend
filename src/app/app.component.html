@@ -54,7 +54,6 @@
                   <div class="form-group">
                     <label for="internet_package">Internet Package</label>
                     <select class="form-control" name="internet_package" id="internet_package" aria-describeby="packageHelp" [(ngModel)]="internet_package" required>
-                      <option value="0.1gig">100 Mb - 3 Days - 1 Cedi</option>
                       <option value="0.3gig">300 Mb - 3 Days - 2 Cedis</option>
                       <option value="1gig">1 Gig - 30 Days - 5 Cedis</option>
                       <option value="3gig">3 Gig - 30 Days - 10 Cedis</option>
@@ -80,7 +79,9 @@
                         <p class="lead text-success">
                           Write this Number Somewhere. It is your AlwaysOn WiFi Voucher
                         </p>
-                        <h2>{{ result }}</h2>
+                        <h2 class="text-center">{{ result }}</h2>
+                        <hr>
+                        <p>Your Transaction ID is: {{ trans_id }}</p>
                       </div>
                       <p class="lead text-danger" *ngIf="error">
                         Error Message <br/>
@@ -101,9 +102,10 @@
                       </p>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
                       <button *ngIf="!error" type="submit" [disabled]="!f.valid" role="button" class="btn btn-primary">Make Payment</button>
                       <a *ngIf="error" onclick="window.location.reload()" class="btn btn-danger">Retry again.</a>
+                      <a *ngIf="success" onclick="window.location.reload()" class="btn btn-secondary">Purchase Another</a>
                     </div>
                   </div>
                 </div>
