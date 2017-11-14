@@ -4,15 +4,22 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { PurchaseService } from './purchase.service';
 import { HttpModule } from '@angular/http';
+import { BuyComponent } from './buy/buy.component';
+import { HelpComponent } from './help/help.component';
+
+import { AppRouting } from './app.routing';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BuyComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRouting
   ],
   providers: [PurchaseService],
   bootstrap: [AppComponent]
