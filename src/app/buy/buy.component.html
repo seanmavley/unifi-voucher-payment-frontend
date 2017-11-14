@@ -74,7 +74,7 @@
                         Error Message
                         <br/> "{{ msg }}"
                       </p>
-                      <ul class="list-group">
+                      <ul class="list-group" *ngIf="f.valid">
                         <li class="list-group-item">Name: <strong>{{ f.value.name}}</strong></li>
                         <li class="list-group-item">Mobile Money Network: <strong>{{ f.value.network }}</strong></li>
                         <li class="list-group-item">Your Number: <strong>{{ f.value.phone_number }}</strong></li>
@@ -82,7 +82,7 @@
                       </ul>
                       <hr>
                       <p class="lead text-center text-danger" *ngIf="!f.valid">
-                        You have not fully completed the form. Go back and fill all the fields.
+                        You have not fully completed the form. Go back and complete the required fields.
                       </p>
                       <p class="lead text-center" *ngIf="f.valid">
                         Proceed below if details above is correct.
@@ -90,7 +90,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
-                      <button *ngIf="!error" type="submit" [disabled]="!f.valid" role="button" class="btn btn-primary">Make Payment</button>
+                      <button *ngIf="!error" type="submit" [disabled]="!f.valid" role="button" class="btn btn-primary" [ngClass]="{ 'btn-outline-danger': !f.valid }"><span *ngIf="f.valid">Make Payment</span><span *ngIf="!f.valid">Invalid Form</span></button>
                       <a *ngIf="error" onclick="window.location.reload()" class="btn btn-danger">Retry again.</a>
                       <a *ngIf="success" onclick="window.location.reload()" class="btn btn-secondary">Purchase Another</a>
                     </div>

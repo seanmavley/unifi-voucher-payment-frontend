@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { PurchaseService } from './purchase.service';
+import { PurchaseService } from './providers/purchase.service';
 import { HttpModule } from '@angular/http';
 import { BuyComponent } from './buy/buy.component';
 import { HelpComponent } from './help/help.component';
