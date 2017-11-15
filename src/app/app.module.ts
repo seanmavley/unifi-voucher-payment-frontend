@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+
+import { RecaptchaModule } from 'ng-recaptcha';
+
 import { PurchaseService } from './providers/purchase.service';
 import { HttpModule } from '@angular/http';
 import { BuyComponent } from './buy/buy.component';
@@ -13,11 +16,12 @@ import { AppRouting } from './app.routing';
   declarations: [
     AppComponent,
     BuyComponent,
-    HelpComponent
+    HelpComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    RecaptchaModule.forRoot(),
     HttpModule,
     AppRouting
   ],

@@ -17,6 +17,8 @@ export class BuyComponent implements OnInit {
   internet_package: string;
   phone_number_validity: boolean;
 
+  captcha_response: string;
+
   result: any;
 
   trans_id: string;
@@ -29,6 +31,11 @@ export class BuyComponent implements OnInit {
   ngOnInit() {
   }
 
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response ${captchaResponse}:`);
+    this.captcha_response = captchaResponse;
+  }
+
   onSubmit(data) {
     console.log(data);
     if (!this.network_prefix.includes(data.phone_number.slice(0, 3))) {
@@ -38,7 +45,7 @@ export class BuyComponent implements OnInit {
     }
     this.busy = true;
     this.purchase
-    .buy(data.name, data.network, data.phone_number, data.internet_package)
+    .buy(data.name, data.network, data.phone_number, data.internet_package, this.captcha_response)
       .subscribe((res) => { 
         this.busy = false;
         if(res.json().state) {
